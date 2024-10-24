@@ -5,10 +5,13 @@ const hbs=require("hbs")
 const collection=require("./mongodb")
 
 const templatepath=path.join(__dirname,'../templates') 
+const publicpath=path.join(__dirname,'../public') 
+
 
 app.use(express.json())
 app.set("view engine","hbs")
 app.set("views",templatepath)
+app.use(express.static(publicpath))
 app.use(express.urlencoded({extended:false}))
 
 app.get("/signup",(req,res)=>{
@@ -43,9 +46,9 @@ app.post("/login",async(req,res)=>{
         res.send("wrong details")
     }
 })
-
-app.listen(3000,()=>{
-    console.log("port connected");
+const Port=3000
+app.listen(Port,()=>{
+    console.log(`Server is connected in port ${Port}`);
 })
 
 
