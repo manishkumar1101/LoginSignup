@@ -8,6 +8,10 @@ mongoose.connect("mongodb://localhost:27017/loginsignup")
 })
 
 const loginschema=new mongoose.Schema({
+    username:{
+        type:String,
+         require:true,
+    },
     email:{
         type:String,
         require:true,
